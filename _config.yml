@@ -3,7 +3,7 @@ title: PHOTORAMA
 email: ""
 description: "Photo Journal"
 url: "https://jillsartisticskills.github.io"
-baseurl: "/website"
+baseurl: "/"
 facebook_username: ""
 twitter_username: ""
 instagram_username: ""
@@ -33,9 +33,9 @@ comments :
 
 # Internal nav
 nav:
-  - GALLERY: "https://jillsartisticskills.github.io/website/gallery/"  
-  - JOURNAL: "https://jillsartisticskills.github.io/website/journal/"
-  - ABOUT: "https://jillsartisticskills.github.io/website/about/"
+  - GALLERY: "https://jillsartisticskills.github.io/gallery/"  
+  - JOURNAL: "https://jillsartisticskills.github.io/journal/"
+  - ABOUT: "https://jillsartisticskills.github.io/about/"
 
 # All translation keys
 translations:
