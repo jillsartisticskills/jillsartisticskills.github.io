@@ -25,9 +25,9 @@ comments :
     short_name : ""
 
 # Internal nav
-nav:
-  - GALLERY: "https://jillsartisticskills.github.io/gallery/"  
-  - REQUEST: "https://jillsartisticskills.github.io/journal/"
+nav:  
+  - PAINTINGS: "https://jillsartisticskills.github.io/journal/"
+  - REQUEST: "https://jillsartisticskills.github.io/gallery/"
   - ABOUT: "https://jillsartisticskills.github.io/about/"
 
 # All translation keys
