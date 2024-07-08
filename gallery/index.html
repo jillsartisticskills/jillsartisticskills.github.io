@@ -1,10 +1,10 @@
 ---
 layout: page
-title: "Online Order2"
+title: "Online Order3"
 description: "Order your customized paintings here"
-active: gallery
 header-img: "img/gallery-bg.png"
 ---
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +15,8 @@ header-img: "img/gallery-bg.png"
         body {
             font-family: Arial, sans-serif;
             color: #333;
+            background-size: cover;
+            background-position: center;
         }
         .container {
             max-width: 600px;
@@ -47,6 +49,15 @@ header-img: "img/gallery-bg.png"
             border: none;
             padding: 10px;
         }
+        .page-header {
+            background: none !important; /* Remove background */
+        }
+        .page-header .container {
+            background: none !important; /* Remove background */
+        }
+        .page-header h1, .page-header p {
+            background: none !important; /* Ensure no background on text */
+        }
     </style>
     <script>
         function checkSizeOption(value) {
@@ -62,6 +73,12 @@ header-img: "img/gallery-bg.png"
     </script>
 </head>
 <body>
+    <div class="page-header">
+        <div class="container">
+            <h1>Online Order2</h1>
+            <p>Order your customized paintings here</p>
+        </div>
+    </div>
     <div class="container">
         <h2 style="color: #fff;">Order Custom Art</h2>
         <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" enctype="multipart/form-data">
