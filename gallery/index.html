@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Online Order3"
+title: "Online Order2"
 description: "Order your customized paintings here"
 header-img: "img/gallery-bg.png"
 ---
@@ -73,12 +73,6 @@ header-img: "img/gallery-bg.png"
     </script>
 </head>
 <body>
-    <div class="page-header">
-        <div class="container">
-            <h1>Online Order2</h1>
-            <p>Order your customized paintings here</p>
-        </div>
-    </div>
     <div class="container">
         <h2 style="color: #fff;">Order Custom Art</h2>
         <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" enctype="multipart/form-data">
@@ -101,6 +95,14 @@ header-img: "img/gallery-bg.png"
                 <option value="other">Other</option>
             </select>
             <input type="text" id="otherSize" name="other_size" placeholder="Please specify the size" style="display:none;">
+
+            <label for="medium">Medium:</label>
+            <select id="medium" name="medium" required>
+                <option value="" disabled selected>Select a medium</option>
+                <option value="Acrylic">Acrylic</option>
+                <option value="Water Color">Water Color</option>
+                <option value="Pen">Pen</option>
+            </select>
 
             <label for="photos">Attach Photos:</label>
             <input type="file" id="photos" name="photos" multiple>
