@@ -5,12 +5,6 @@ description: "order online"
 active: gallery
 header-img: "img/gallery-bg.jpg"
 
----
-layout: page
-title: "Order Custom Art"
-permalink: /order-custom-art/
----
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,10 +24,10 @@ permalink: /order-custom-art/
             display: flex;
             flex-direction: column;
         }
-        label, input, textarea {
+        label, input, select, textarea {
             margin-bottom: 10px;
         }
-        input, textarea {
+        input, select, textarea {
             padding: 8px;
             font-size: 16px;
         }
@@ -45,6 +39,18 @@ permalink: /order-custom-art/
             padding: 10px;
         }
     </style>
+    <script>
+        function checkSizeOption(value) {
+            var otherSizeInput = document.getElementById('otherSize');
+            if (value === 'other') {
+                otherSizeInput.style.display = 'block';
+                otherSizeInput.required = true;
+            } else {
+                otherSizeInput.style.display = 'none';
+                otherSizeInput.required = false;
+            }
+        }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -58,6 +64,17 @@ permalink: /order-custom-art/
 
             <label for="description">Description:</label>
             <textarea id="description" name="description" rows="4" cols="50" required></textarea>
+
+            <label for="size">Size of the Artwork:</label>
+            <select id="size" name="size" onchange="checkSizeOption(this.value)" required>
+                <option value="" disabled selected>Select a size</option>
+                <option value="8x10 inches">8x10 inches</option>
+                <option value="12x16 inches">12x16 inches</option>
+                <option value="16x20 inches">16x20 inches</option>
+                <option value="20x24 inches">20x24 inches</option>
+                <option value="other">Other</option>
+            </select>
+            <input type="text" id="otherSize" name="other_size" placeholder="Please specify the size" style="display:none;">
 
             <label for="photos">Attach Photos:</label>
             <input type="file" id="photos" name="photos" multiple>
