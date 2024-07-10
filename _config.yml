@@ -26,8 +26,8 @@ comments :
 
 # Internal nav
 nav:  
-  - PAINTINGS: "https://jillsartisticskills.github.io/orders/"
-  - REQUEST: "https://jillsartisticskills.github.io/gallery/"
+  - PAINTINGS: "https://jillsartisticskills.github.io/gallery/"
+  - REQUEST: "https://jillsartisticskills.github.io/orders/"
   - ABOUT: "https://jillsartisticskills.github.io/about/"
 
 # All translation keys
