@@ -12,167 +12,189 @@ images:
    gallery-folder: /img/slider/
 ---
 
-
+<!DOCTYPE html>
 <html class="no-js" lang="en">
-	<head>
-		<meta content="charset=utf-8">
+<head>
+    <meta charset="utf-8">
+    <title>{{ page.main-title }}</title>
 
-		<!-- CSS -->
-		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-		<link rel="stylesheet" href="{{ site.baseurl }}/css/main.css" type="text/css" media="screen" />
-		<link rel="stylesheet" href="{{ site.baseurl }}/css/galleries.css" media="screen" />
-		<link rel="stylesheet" href="{{ site.baseurl }}/css/WYSIWYG.css" media="screen" />
+    <!-- CSS -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{ site.baseurl }}/css/main.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{{ site.baseurl }}/css/galleries.css" media="screen" />
+    <link rel="stylesheet" href="{{ site.baseurl }}/css/WYSIWYG.css" media="screen" />
 
-		<!-- Modernizr -->
-		<script src="{{ site.baseurl }}/js/modernizr.js"></script>
+    <!-- Modernizr -->
+    <script src="{{ site.baseurl }}/js/modernizr.js"></script>
+    <style>
+        .fullscreen-gallery {
+            position: relative;
+            width: 100%;
+            height: 100vh; /* Fullscreen height */
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000; /* Background color for better visibility */
+        }
 
-	</head>
+        .gallery-item img {
+            max-width: 100%;
+            max-height: 100%;
+            display: none;
+        }
 
-	<body class="fullscreen">
+        .gallery-item img.active {
+            display: block;
+        }
 
-		<!-- MAIN CONTENT SECTION  _____________________________________________-->
-			<section id="content" role="main">
-				<div class="wrapper">
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            z-index: 10;
+        }
 
-					<!-- WYSIWYG -->
-					<div class="position-absolute">
-						<h2 class="big no-margin"><strong>{{ page.main-title }}</strong></h2>
-						<h2>{{ page.subtitle }}</h2> 
-							<div class="entry-summary">
-								<p>{{ page.description }}</p>
-							</div><br>
-					</div>
-						
-					<!-- <div class="gallery fullscreen-gallery kenburns-gallery">
-						<canvas id="kenburns"></canvas>	
-						{% for image in page.images %}  	
-							<figure class="gallery-item">
-								<header class='gallery-icon'>
-									<a href="{{ site.url }}{{ site.baseurl }}{{ image.gallery-folder }}">
-									<img src="{{ site.url }}{{ site.baseurl }}{{ image.image_path }}"></a>
-								</header>	
-							</figure>
-						{% endfor %}
-					</div> -->
-					<!-- END WYSIWYG -->
+        .nav-button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
 
-					<div class="fullscreen-gallery">
-						{% for image in page.images %}
-						<div class="gallery-item">
-							<img src="{{ site.url }}{{ site.baseurl }}{{ image.image_path }}" alt="Gallery Image">
-						</div>
-						{% endfor %}
-						<button class="nav-button prev-button" onclick="prevPhoto()">Previous</button>
-						<button class="nav-button next-button" onclick="nextPhoto()">Next</button>
-					</div>
-						
-				
-				</div><!-- END .wrapper -->
-			</section>
+        .prev-button {
+            left: 10px;
+        }
 
-		<div id="footer" role="contentinfo">
-			<ul class="soc-icons">
-				{% if site.instagram_username %}
-					<li>
-						<a href="https://instagram.com/{{ site.instagram_username }}" style="
-							color:#dddddd; target="_blank" title="Instagram">
-							<i class="fa fa-instagram"></i>
-						</a>
-					</li>
-				{% endif %} 	
-			</ul>	
-		</div>
+        .next-button {
+            right: 10px;
+        }
+    </style>
+</head>
 
-		
-		<!-- jQuery -->
-		<script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
-		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-		<script src="{{ site.baseurl }}/js/retina.min.js"></script> 
+<body class="fullscreen">
 
-		<!-- include mousewheel plugins -->
-		<script src="{{ site.baseurl }}/js/jquery.mousewheel.min.js"></script>
-		<!-- include gallery cycle plugin -->
-		<script src="{{ site.baseurl }}/js/jquery.cycle.min.js"></script>
-		<!-- include kenburns plugins -->
-		<script src="{{ site.baseurl }}/js/kenburns.min.js"></script>
-		<!-- include svg line drawing plugin -->
-		<script src="{{ site.baseurl }}/js/jquery.lazylinepainter.min.js"></script>
-		<!-- include custom script -->
-		<script src="{{ site.baseurl }}/js/scripts.js"></script>
+    <!-- MAIN CONTENT SECTION  _____________________________________________-->
+    <section id="content" role="main">
+        <div class="wrapper">
 
-		<!-- Custom JavaScript -->
-		<script>
-			document.addEventListener('DOMContentLoaded', function() {
-				var images = document.querySelectorAll('.gallery-item img');
-				var currentIndex = 0;
-	
-				function showPhoto(index) {
-					images.forEach(function(img, i) {
-						img.classList.toggle('active', i === index);
-					});
-				}
-	
-				function nextPhoto() {
-					currentIndex = (currentIndex + 1) % images.length;
-					showPhoto(currentIndex);
-				}
-	
-				function prevPhoto() {
-					currentIndex = (currentIndex - 1 + images.length) % images.length;
-					showPhoto(currentIndex);
-				}
-	
-				function handleSwipe(event) {
-					var xStart = null;
-					var yStart = null;
-	
-					function onTouchStart(evt) {
-						const firstTouch = (evt.touches || evt.originalEvent.touches)[0];
-						xStart = firstTouch.clientX;
-						yStart = firstTouch.clientY;
-					}
-	
-					function onTouchMove(evt) {
-						if (!xStart || !yStart) {
-							return;
-						}
-	
-						var xEnd = evt.touches[0].clientX;
-						var yEnd = evt.touches[0].clientY;
-	
-						var xDiff = xStart - xEnd;
-						var yDiff = yStart - yEnd;
-	
-						if (Math.abs(xDiff) > Math.abs(yDiff)) {
-							if (xDiff > 0) {
-								nextPhoto();
-							} else {
-								prevPhoto();
-							}
-						}
-						xStart = null;
-						yStart = null;
-					}
-	
-					document.addEventListener('touchstart', onTouchStart, false);
-					document.addEventListener('touchmove', onTouchMove, false);
-				}
-	
-				showPhoto(currentIndex); // Show the first photo
-				handleSwipe(); // Enable swipe functionality
-	
-				// Allow keyboard navigation
-				document.addEventListener('keydown', function(event) {
-					if (event.key === 'ArrowRight') {
-						nextPhoto();
-					} else if (event.key === 'ArrowLeft') {
-						prevPhoto();
-					}
-				});
-				});
-		</script>
+            <!-- WYSIWYG -->
+            <div class="position-absolute">
+                <h2 class="big no-margin"><strong>{{ page.main-title }}</strong></h2>
+                <h2>{{ page.subtitle }}</h2>
+                <div class="entry-summary">
+                    <p>{{ page.description }}</p>
+                </div><br>
+            </div>
 
+            <div class="gallery fullscreen-gallery">
+                {% for image in page.images %}
+                <div class="gallery-item">
+                    <header class="gallery-icon">
+                        <a href="{{ site.url }}{{ site.baseurl }}{{ image.gallery-folder }}">
+                            <img src="{{ site.url }}{{ site.baseurl }}{{ image.image_path }}" alt="Gallery Image">
+                        </a>
+                    </header>
+                </div>
+                {% endfor %}
+                <button class="nav-button prev-button" onclick="prevPhoto()">Previous</button>
+                <button class="nav-button next-button" onclick="nextPhoto()">Next</button>
+            </div>
+            <!-- END WYSIWYG -->
 
-	</body>
+        </div><!-- END .wrapper -->
+    </section>
+
+    <div id="footer" role="contentinfo">
+        <ul class="soc-icons">
+            {% if site.instagram_username %}
+            <li>
+                <a href="https://instagram.com/{{ site.instagram_username }}" style="color:#dddddd;" target="_blank" title="Instagram">
+                    <i class="fa fa-instagram"></i>
+                </a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+
+    <!-- jQuery -->
+    <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="{{ site.baseurl }}/js/retina.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var images = document.querySelectorAll('.gallery-item img');
+            var currentIndex = 0;
+
+            function showPhoto(index) {
+                images.forEach(function(img, i) {
+                    img.classList.toggle('active', i === index);
+                });
+            }
+
+            function nextPhoto() {
+                currentIndex = (currentIndex + 1) % images.length;
+                showPhoto(currentIndex);
+            }
+
+            function prevPhoto() {
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                showPhoto(currentIndex);
+            }
+
+            function handleSwipe(event) {
+                var xStart = null;
+                var yStart = null;
+
+                function onTouchStart(evt) {
+                    const firstTouch = (evt.touches || evt.originalEvent.touches)[0];
+                    xStart = firstTouch.clientX;
+                    yStart = firstTouch.clientY;
+                }
+
+                function onTouchMove(evt) {
+                    if (!xStart || !yStart) {
+                        return;
+                    }
+
+                    var xEnd = evt.touches[0].clientX;
+                    var yEnd = evt.touches[0].clientY;
+
+                    var xDiff = xStart - xEnd;
+                    var yDiff = yStart - yEnd;
+
+                    if (Math.abs(xDiff) > Math.abs(yDiff)) {
+                        if (xDiff > 0) {
+                            nextPhoto();
+                        } else {
+                            prevPhoto();
+                        }
+                    }
+                    xStart = null;
+                    yStart = null;
+                }
+
+                document.addEventListener('touchstart', onTouchStart, false);
+                document.addEventListener('touchmove', onTouchMove, false);
+            }
+
+            showPhoto(currentIndex); // Show the first photo
+            handleSwipe(); // Enable swipe functionality
+
+            // Allow keyboard navigation
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'ArrowRight') {
+                    nextPhoto();
+                } else if (event.key === 'ArrowLeft') {
+                    prevPhoto();
+                }
+            });
+        });
+    </script>
+
+</body>
 </html>
-
