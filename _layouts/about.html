@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<!-- Page Header -->
+<!-- Page Header
 <header class="intro-header" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
     <div class="container">
         <div class="row">
@@ -15,7 +15,23 @@ layout: default
             </div>
         </div>
     </div>
-</header>
+</header> -->
+
+<!-- Main Content -->
+<div class="container about-page">
+    <div class="row">
+        <div class="col-md-4">
+            <!-- Replace with your picture -->
+            <img src="{{ site.baseurl }}/{{  page.header-img  }}" alt="Jillian" class="img-responsive" style="max-width: 100%;">
+        </div>
+        <div class="col-md-8">
+            <!-- Content -->
+            <h2>{{ page.title }}</h2>
+            <p>{{ page.description }}</p>
+            {{ content }}
+        </div>
+    </div>
+</div>
 
 <!-- Main Content -->
 <div class="container">
@@ -30,3 +46,23 @@ layout: default
 
 <!-- Custom Theme JavaScript -->
 <script src="{{ site.baseurl }}/js/main.min.js "></script>
+
+<!-- Custom Styles -->
+<style>
+    .about-page {
+        margin-top: 50px; /* Adjust based on your needs */
+    }
+    .about-page img {
+        border-radius: 50%; /* Optional: make image circular */
+    }
+    .about-page h2 {
+        margin-top: 0;
+    }
+</style>
+
+
+
+
+
+
+
