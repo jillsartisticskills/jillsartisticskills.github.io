@@ -10,46 +10,55 @@ images:
    img-size: 16in x 16in
    img-medium: watercolor
    img-price: 10$
+   tags: [tag01]
  - image_path: /gallery/paintings/bear.png
    img-name: bear
    img-size: 20in x 16in
    img-medium: watercolor
    img-price: 20$
+   tags: [tag01]
  - image_path: /gallery/paintings/bird.png
    img-name: bird
    img-size: 8in x 16in
    img-medium: watercolor
    img-price: 30$
+   tags: [tag01]
  - image_path: /gallery/paintings/cow.png
    img-name: cow
    img-size: 8in x 16in
    img-medium: watercolor
    img-price: 10$
+   tags: [tag01]
  - image_path: /gallery/paintings/owl.png
    img-name: owl
    img-size: 8in x 16in
    img-medium: watercolor
    img-price: 15$
+   tags: [tag01]
  - image_path: /gallery/paintings/owl2.png
    img-name: owl2
    img-size: 8in x 16in
    img-medium: watercolor
    img-price: 20$
+   tags: [tag01, tag04]
  - image_path: /gallery/paintings/summer.png
    img-name: summer
    img-size: 8in x 16in
    img-medium: watercolor
    img-price: 35$
+   tags: [tag01]
  - image_path: /gallery/paintings/swan.png
    img-name: swan
    img-size: 8in x 16in
    img-medium: watercolor
    img-price: 22$
+   tags: [tag01, tag03]
  - image_path: /gallery/paintings/woman.png
    img-name: woman
    img-size: 8in x 16in
    img-medium: watercolor
    img-price: 45$
+   tags: [tag01, tag02]
 ---
 
 <html class="no-js" lang="en">
@@ -58,9 +67,11 @@ images:
     <link rel="stylesheet" href="{{ "/css/selena.css" | prepend: site.baseurl }}">
 </head>
 <body class="gallery">
-
+	<div style="font-family: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif; display:inline-block;margin-left:.5em;">
+		Browse by <a href="{{ site.baseurl }}/gallery/category/">Category</a> or <a href="{{ site.baseurl }}/gallery/tag/">Tag</a>
+	</div>
 	<section id="content" role="main">
-		<div class="wrapper">			
+		<div class="wrapper">		
 			<!-- Gallery __-->
 			<div class="gallery masonry-gallery">
 			{% for image in page.images %}  	
