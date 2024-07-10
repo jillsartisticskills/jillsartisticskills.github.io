@@ -1,86 +1,110 @@
 ---
 layout: page
-description: "Gallery"
 title: "Paintings"
-active: journal
-header-img: "img/writing-bg.jpg"
+description: "archive"
+active: gallery
+header-img: "img/gallery-bg.jpg"
+images:
+ - image_path: /gallery/albums/alb01.jpg
+   gallery-folder: /gallery/gallery01/
+   gallery-name: gallery1
+   gallery-date: July 2015
+ - image_path: /gallery/albums/alb02.jpg
+   gallery-folder: /gallery/gallery02/
+   gallery-name: gallery2
+   gallery-date: June 2015
+ - image_path: /gallery/albums/alb03.jpg
+   gallery-folder: /gallery/gallery03/
+   gallery-name: gallery3
+   gallery-date: May 2015
+ - image_path: /gallery/albums/alb04.jpg
+   gallery-folder: /gallery/gallery04/
+   gallery-name: gallery4
+   gallery-date: April 2015
+ - image_path: /gallery/albums/alb05.jpg
+   gallery-folder: /gallery/gallery05/
+   gallery-name: gallery5
+   gallery-date: March 2015
+ - image_path: /gallery/albums/alb06.jpg
+   gallery-folder: /gallery/gallery06/
+   gallery-name: gallery6
+   gallery-date: February 2015
+ - image_path: /gallery/albums/alb07.jpg
+   gallery-folder: /gallery/gallery07/
+   gallery-name: gallery7
+   gallery-date: January 2015
+ - image_path: /gallery/albums/alb08.jpg
+   gallery-folder: /gallery/gallery08/
+   gallery-name: gallery8
+   gallery-date: December 2014
+ - image_path: /gallery/albums/alb09.jpg
+   gallery-folder: /gallery/gallery09/
+   gallery-name: gallery9
+   gallery-date: November 2014
 ---
 
+<html class="no-js" lang="en">
 <head>
-<link rel="stylesheet" href="{{ site.baseurl }}/css/journal.css" media="screen" />
+	<meta content="charset=utf-8">
+    <link rel="stylesheet" href="{{ "/css/selena.css" | prepend: site.baseurl }}">
 </head>
 
-<body class="journal">
-<div class="archive">
-  <h1 class="archive-title" style="display:inline-block;"> POSTS </h1>
 
-<div style="font-family: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif; display:inline-block;margin-left:.5em;">
-    Browse by <a href="{{ site.baseurl }}/journal/category/">Category</a> or <a href="{{ site.baseurl }}/journal/tag/">Tag</a>
-  </div>
-</div>
-
-<section class="section--postsWrapper">
-  <div class="container">
-    <div class="blockGroup">
-      <ul class="blockGroup-list">
-
-{% for post in paginator.posts %}
-
-
- {% assign post = site.posts.first %}
-  <!-- {% assign content = post.content %} -->
-  
-<li class="block">
-<div class="postArticle-wrapper">
-
-<div class="post-preview" style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: #530720;">
-    
-<a href="{{ post.url | prepend: site.baseurl }}">
-        {% if post.image.feature %}
-	<img src="{{ site.baseurl }}/img/postcover/{{ post.image.feature }}">
-	{% endif %}
+    <body class="gallery">
  
- 
-        <p class="post-title" style="font-family: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 16px; margin-left: 1em;"> &#9658; {{ post.title }}
-        </p>
-</a>
-        {% if post.subtitle %}
-        <p class="post-subtitle" style="font-family: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 12px; margin-left: 1em;"> {{ post.subtitle }}</p>
-        {% endif %}
-    
-    <p class="post-meta" style="font-family: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif; font-size: 10px; margin-left: 1em;"> Posted on {{ post.date | date: "%B %-d, %Y" }}</p>
-</div>
+	<section id="content" role="main">
+		<div class="wrapper">
+	
+			<h2>{{page.title}}</h2>
+			
+			<!-- Gallery __-->
+			<div class="gallery masonry-gallery">
+				
+{% for image in page.images %}  	
 
-</div>
-</li>
- {% endfor %}
-<p>&nbsp;</p>
-      </ul>
-    </div>
-  </div>
-</section>
+	               <figure class="gallery-item">
+                         <figure class="effect-selena">
+					<header class='gallery-icon'>
+		       
+<a href="{{ site.url }}{{ site.baseurl }}{{ image.gallery-folder }}">
+<img src="{{ site.url }}{{ site.baseurl }}{{ image.image_path }}"></a>
 
+					</header>	
+					<figcaption class='gallery-caption'>
+						<div class="entry-summary">
+							<h3>{{image.gallery-name}}</h3>
+							<p>{{image.gallery-date}}</p>
+						</div>
+					</figcaption>
+                       </figure>
+				</figure>
+							
+{% endfor %}		
+				
+			</div>
+			
+		</div><!-- END .wrapper -->
+	</section>
 
-<!-- Pager -->
-{% if paginator.total_pages > 1 %}
-<ul class="pager" style="font-family: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif;" >
-    {% if paginator.previous_page %}
-    <li class="previous">
-        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer Posts</a>
-    </li>
-    {% endif %}
-
-<span class="button-height"> Page {{paginator.page}} of {{paginator.total_pages}}</span>
-
-    {% if paginator.next_page %}
-    <li class="next">
-        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older Posts &rarr;</a>
-    </li>
-    {% endif %}
-</ul>
-{% endif %}
 
 <br>
-<h6>Image Source: <a href="https://unsplash.com/photos/8muUTAmcWU4">UNSPLASH</a>
+<h6><p>Image Source: <a href="https://unsplash.com/photos/YOT6kS8YtEA/">Unsplash</a></p></h6>
 
-</body>
+<!-- jQuery -->    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="{{ site.baseurl }}/js/retina.min.js"></script>
+<!-- include Masonry -->
+<script src="{{ site.baseurl }}/js/isotope.pkgd.min.js"></script> 
+<!-- include mousewheel plugins -->
+<script src="{{ site.baseurl }}/js/jquery.mousewheel.min.js"></script>
+<!-- include carousel plugins -->
+<script src="{{ site.baseurl}}/js/jquery.tinycarousel.min.js"></script>
+<!-- include svg line drawing plugin -->
+<script src="{{ site.baseurl }}/js/jquery.lazylinepainter.min.js"></script>
+<!-- include custom script -->
+<script src="{{ site.baseurl }}/js/scripts.js"></script>
+<!-- Modernizr -->
+ <script src="{{ site.baseurl }}/js/modernizr.js"></script>
+
+</body></html>
