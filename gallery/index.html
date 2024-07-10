@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Paintings"
-description: "paintings description"
+description: "Here are my works"
 active: gallery
 header-img: "img/gallery-bg.jpg"
 images:
@@ -30,46 +30,34 @@ images:
 	<meta content="charset=utf-8">
     <link rel="stylesheet" href="{{ "/css/selena.css" | prepend: site.baseurl }}">
 </head>
+<body class="gallery">
 
-
-    <body class="gallery">
- 
 	<section id="content" role="main">
-		<div class="wrapper">
-	
-			<h2>{{page.title}}</h2>
-			
+		<div class="wrapper">			
 			<!-- Gallery __-->
 			<div class="gallery masonry-gallery">
-				
-{% for image in page.images %}  	
-
-	               <figure class="gallery-item">
-                         <figure class="effect-selena">
+			{% for image in page.images %}  	
+				<figure class="gallery-item">
+				<figure class="effect-selena">
 					<header class='gallery-icon'>
-		       
-<a href="{{ site.url }}{{ site.baseurl }}{{ image.img-folder }}">
-<img src="{{ site.url }}{{ site.baseurl }}{{ image.image_path }}"></a>
-
+						<a href="{{ site.url }}{{ site.baseurl }}{{ image.img-folder }}">
+						<img src="{{ site.url }}{{ site.baseurl }}{{ image.image_path }}"></a>
 					</header>	
 					<figcaption class='gallery-caption'>
 						<div class="entry-summary">
 							<h3>{{image.img-name}}</h3>
 							<p>{{image.img-size}}</p>
-              				<p>{{image.img-medium}}</p>
-              				<p>{{image.img-price}}</p>
+							<p>{{image.img-medium}}</p>
+							<p>{{image.img-price}}</p>
 						</div>
 					</figcaption>
-                       </figure>
+				</figure>
 				</figure>
 							
-{% endfor %}		
-				
+			{% endfor %}			
 			</div>
-			
 		</div><!-- END .wrapper -->
 	</section>
-
 
 <br>
 
@@ -90,4 +78,5 @@ images:
 <!-- Modernizr -->
  <script src="{{ site.baseurl }}/js/modernizr.js"></script>
 
-</body></html>
+</body>
+</html>
