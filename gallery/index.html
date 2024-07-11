@@ -63,7 +63,7 @@ images:
 
 <html class="no-js" lang="en">
 <head>
-	<meta charset="utf-8">
+    <meta charset="utf-8">
     <link rel="stylesheet" href="{{ "/css/selena.css" | prepend: site.baseurl }}">
     <style>
         .filter-buttons {
@@ -106,7 +106,7 @@ images:
             <!-- Gallery -->
             <div class="gallery masonry-gallery">
                 {% for image in page.images %}
-                <figure class="gallery-item" data-medium="{{ image.img-medium }}">
+                <figure class="gallery-item" data-medium="{{ image.img-medium | downcase }}">
                     <figure class="effect-selena">
                         <header class='gallery-icon'>
                             <a href="{{ site.url }}{{ site.baseurl }}{{ image.image_path }}">
@@ -138,7 +138,7 @@ images:
 <!-- include mousewheel plugins -->
 <script src="{{ site.baseurl }}/js/jquery.mousewheel.min.js"></script>
 <!-- include carousel plugins -->
-<script src="{{ site.baseurl}}/js/jquery.tinycarousel.min.js"></script>
+<script src="{{ site.baseurl }}/js/jquery.tinycarousel.min.js"></script>
 <!-- include svg line drawing plugin -->
 <script src="{{ site.baseurl }}/js/jquery.lazylinepainter.min.js"></script>
 <!-- include custom script -->
@@ -165,7 +165,8 @@ images:
 
                 // Filter gallery items
                 galleryItems.forEach(function(item) {
-                    if (medium === 'all' || item.getAttribute('data-medium') === medium) {
+                    var itemMedium = item.getAttribute('data-medium').toLowerCase();
+                    if (medium === 'all' || itemMedium === medium.toLowerCase()) {
                         item.classList.add('active');
                         item.style.display = 'block';
                     } else {
