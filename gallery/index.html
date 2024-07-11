@@ -63,44 +63,74 @@ images:
 
 <html class="no-js" lang="en">
 <head>
-	<meta content="charset=utf-8">
+	<meta charset="utf-8">
     <link rel="stylesheet" href="{{ "/css/selena.css" | prepend: site.baseurl }}">
+    <style>
+        .filter-buttons {
+            margin-bottom: 20px;
+        }
+        .filter-buttons button {
+            margin-right: 10px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        .filter-buttons button.active {
+            background-color: #555;
+        }
+        .gallery-item {
+            display: none; /* Hide initially */
+        }
+        .gallery-item.active {
+            display: block; /* Show filtered items */
+        }
+    </style>
 </head>
 <body class="gallery">
-	<div style="font-family: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif; display:inline-block;margin-left:.5em;">
-		Browse by <a href="{{ site.baseurl }}/gallery/category/">Category</a> or <a href="{{ site.baseurl }}/gallery/tag/">Tag</a>
-	</div>
-	<section id="content" role="main">
-		<div class="wrapper">		
-			<!-- Gallery __-->
-			<div class="gallery masonry-gallery">
-			{% for image in page.images %}  	
-				<figure class="gallery-item">
-				<figure class="effect-selena">
-					<header class='gallery-icon'>
-						<a href="{{ site.url }}{{ site.baseurl }}{{ image.image_path }}">
-						<img src="{{ site.url }}{{ site.baseurl }}{{ image.image_path }}"></a>
-					</header>	
-					<figcaption class='gallery-caption'>
-						<div class="entry-summary">
-							<h3>{{image.img-name}}</h3>
-							<p>{{image.img-size}}</p>
-							<p>{{image.img-medium}}</p>
-							<p>{{image.img-price}}</p>
-						</div>
-					</figcaption>
-				</figure>
-				</figure>
-							
-			{% endfor %}			
-			</div>
-		</div><!-- END .wrapper -->
-	</section>
+    <div style="font-family: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif; display:inline-block;margin-left:.5em;">
+        Browse by <a href="{{ site.baseurl }}/gallery/category/">Medium</a> or <a href="{{ site.baseurl }}/gallery/tag/">Tag</a>
+    </div>
+    <section id="content" role="main">
+        <div class="wrapper">
+            <!-- Filter Buttons -->
+            <div class="filter-buttons">
+                <button data-medium="all" class="active">All</button>
+                <button data-medium="watercolor">Watercolor</button>
+                <button data-medium="oil">Oil</button>
+                <button data-medium="acrylic">Acrylic</button>
+                <!-- Add more buttons for other mediums as needed -->
+            </div>
+            
+            <!-- Gallery -->
+            <div class="gallery masonry-gallery">
+                {% for image in page.images %}
+                <figure class="gallery-item" data-medium="{{ image.img-medium }}">
+                    <figure class="effect-selena">
+                        <header class='gallery-icon'>
+                            <a href="{{ site.url }}{{ site.baseurl }}{{ image.image_path }}">
+                                <img src="{{ site.url }}{{ site.baseurl }}{{ image.image_path }}" alt="{{ image.img-name }}">
+                            </a>
+                        </header>
+                        <figcaption class='gallery-caption'>
+                            <div class="entry-summary">
+                                <h3>{{ image.img-name }}</h3>
+                                <p>{{ image.img-size }}</p>
+                                <p>{{ image.img-medium }}</p>
+                                <p>{{ image.img-price }}</p>
+                            </div>
+                        </figcaption>
+                    </figure>
+                </figure>
+                {% endfor %}
+            </div>
+        </div><!-- END .wrapper -->
+    </section>
 
 <br>
 
 <!-- jQuery -->    
-
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="{{ site.baseurl }}/js/retina.min.js"></script>
 <!-- include Masonry -->
@@ -108,13 +138,48 @@ images:
 <!-- include mousewheel plugins -->
 <script src="{{ site.baseurl }}/js/jquery.mousewheel.min.js"></script>
 <!-- include carousel plugins -->
-<script src="{{ site.baseurl}}/js/jquery.tinycarousel.min.js"></script>
+<script src="{{ site.baseurl }}/js/jquery.tinycarousel.min.js"></script>
 <!-- include svg line drawing plugin -->
 <script src="{{ site.baseurl }}/js/jquery.lazylinepainter.min.js"></script>
 <!-- include custom script -->
 <script src="{{ site.baseurl }}/js/scripts.js"></script>
 <!-- Modernizr -->
- <script src="{{ site.baseurl }}/js/modernizr.js"></script>
+<script src="{{ site.baseurl }}/js/modernizr.js"></script>
+
+<!-- Custom JavaScript for Filtering -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var filterButtons = document.querySelectorAll('.filter-buttons button');
+        var galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                var medium = this.getAttribute('data-medium');
+
+                // Remove active class from all buttons
+                filterButtons.forEach(function(btn) {
+                    btn.classList.remove('active');
+                });
+                // Add active class to clicked button
+                this.classList.add('active');
+
+                // Filter gallery items
+                galleryItems.forEach(function(item) {
+                    if (medium === 'all' || item.getAttribute('data-medium') === medium) {
+                        item.classList.add('active');
+                    } else {
+                        item.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // Show all items initially
+        galleryItems.forEach(function(item) {
+            item.classList.add('active');
+        });
+    });
+</script>
 
 </body>
 </html>
