@@ -38,7 +38,7 @@ images:
  - image_path: /gallery/paintings/owl2.png
    img-name: owl2
    img-size: 8in x 16in
-   img-medium: watercolor
+   img-medium: acrylic
    img-price: 20$
    tags: [tag01, tag04]
  - image_path: /gallery/paintings/summer.png
@@ -56,7 +56,7 @@ images:
  - image_path: /gallery/paintings/woman.png
    img-name: woman
    img-size: 8in x 16in
-   img-medium: watercolor
+   img-medium: acrylic
    img-price: 45$
    tags: [tag01, tag02]
 ---
@@ -89,9 +89,6 @@ images:
     </style>
 </head>
 <body class="gallery">
-    <div style="font-family: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif; display:inline-block;margin-left:.5em;">
-        Browse by <a href="{{ site.baseurl }}/gallery/category/">Medium</a> or <a href="{{ site.baseurl }}/gallery/tag/">Tag</a>
-    </div>
     <section id="content" role="main">
         <div class="wrapper">
             <!-- Filter Buttons -->
@@ -106,23 +103,23 @@ images:
             <!-- Gallery -->
             <div class="gallery masonry-gallery">
                 {% for image in page.images %}
-                <figure class="gallery-item" data-medium="{{ image.img-medium }}">
-                    <figure class="effect-selena">
-                        <header class='gallery-icon'>
-                            <a href="{{ site.url }}{{ site.baseurl }}{{ image.image_path }}">
-                                <img src="{{ site.url }}{{ site.baseurl }}{{ image.image_path }}" alt="{{ image.img-name }}">
-                            </a>
-                        </header>
-                        <figcaption class='gallery-caption'>
-                            <div class="entry-summary">
-                                <h3>{{ image.img-name }}</h3>
-                                <p>{{ image.img-size }}</p>
-                                <p>{{ image.img-medium }}</p>
-                                <p>{{ image.img-price }}</p>
-                            </div>
-                        </figcaption>
-                    </figure>
-                </figure>
+                  <figure class="gallery-item" data-medium="{{ image.img-medium }}">
+                      <figure class="effect-selena">
+                          <header class='gallery-icon'>
+                              <a href="{{ site.url }}{{ site.baseurl }}{{ image.image_path }}">
+                                  <img src="{{ site.url }}{{ site.baseurl }}{{ image.image_path }}" alt="{{ image.img-name }}">
+                              </a>
+                          </header>
+                          <figcaption class='gallery-caption'>
+                              <div class="entry-summary">
+                                  <h3>{{ image.img-name }}</h3>
+                                  <p>{{ image.img-size }}</p>
+                                  <p>{{ image.img-medium }}</p>
+                                  <p>{{ image.img-price }}</p>
+                              </div>
+                          </figcaption>
+                      </figure>
+                  </figure>
                 {% endfor %}
             </div>
         </div><!-- END .wrapper -->
