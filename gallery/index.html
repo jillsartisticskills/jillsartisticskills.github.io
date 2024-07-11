@@ -74,47 +74,9 @@ images:
 ---
 
 <html class="no-js" lang="en">
-<head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="{{ "/css/selena.css" | prepend: site.baseurl }}">
-    <style>
-        .filter-buttons {
-            margin-bottom: 20px;
-        }
-        .filter-buttons button {
-            margin-right: 10px;
-            padding: 10px 20px;
-            background-color: #333;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-        }
-        .filter-buttons button.active {
-            background-color: #555;
-        }
-        .gallery-item {
-            display: none; /* Hide initially */
-        }
-        .gallery-item.active {
-            display: block; /* Show filtered items */
-        }
-    </style>
-</head>
 <body class="gallery">
-    <div style="font-family: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif; display:inline-block;margin-left:.5em;">
-        <h2> Filter by medium3</h2>
-    </div>
     <section id="content" role="main">
         <div class="wrapper">
-            <!-- Filter Buttons -->
-            <div class="filter-buttons">
-                <button data-medium="all" class="active">All</button>
-                <button data-medium="watercolor">Watercolor</button>
-                <button data-medium="oil">Oil</button>
-                <button data-medium="acrylic">Acrylic</button>
-                <!-- Add more buttons for other mediums as needed -->
-            </div>
-            
             <!-- Gallery -->
             <div class="gallery masonry-gallery">
                 {% for image in page.images %}
@@ -158,44 +120,6 @@ images:
 <!-- Modernizr -->
 <script src="{{ site.baseurl }}/js/modernizr.js"></script>
 
-<!-- Custom JavaScript for Filtering -->
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var filterButtons = document.querySelectorAll('.filter-buttons button');
-        var galleryItems = document.querySelectorAll('.gallery-item');
-
-        filterButtons.forEach(function(button) {
-            button.addEventListener('click', function() {
-                var medium = this.getAttribute('data-medium').toLowerCase();
-
-                // Remove active class from all buttons
-                filterButtons.forEach(function(btn) {
-                    btn.classList.remove('active');
-                });
-                // Add active class to clicked button
-                this.classList.add('active');
-
-                // Filter gallery items
-                galleryItems.forEach(function(item) {
-                    var itemMedium = item.getAttribute('data-medium').toLowerCase();
-                    if (medium === 'all' || itemMedium === medium) {
-                        item.classList.add('active');
-                        item.style.display = 'block';
-                    } else {
-                        item.classList.remove('active');
-                        item.style.display = 'none';
-                    }
-                });
-            });
-        });
-
-        // Show all items initially
-        galleryItems.forEach(function(item) {
-            item.classList.add('active');
-            item.style.display = 'block';
-        });
-    });
-</script>
 
 </body>
 </html>
