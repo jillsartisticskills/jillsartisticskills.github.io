@@ -18,10 +18,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
             // Set the caption content with different fonts
             captionText.innerHTML = `
-                <span class='img-name'>${imgName}</span><br>
-                <span class='img-size'>${imgSize}</span><br>
-                <span class='img-medium'>${imgMedium}</span><br>
-                <span class='img-price'>${imgPrice}</span>
+                <span class='img-name'>Name: ${imgName}</span><br>
+                <span class='img-size'>Size: ${imgSize}</span><br>
+                <span class='img-medium'>Medium: ${imgMedium}</span><br>
+                <span class='img-price'>Price: ${imgPrice}</span>
             `;
         });
     });
