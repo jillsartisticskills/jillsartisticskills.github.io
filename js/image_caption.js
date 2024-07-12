@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             event.preventDefault();
             modal.style.display = "block";
             modalImg.src = item.href;
-            
+
             // Get data attributes from the image
             var img = item.querySelector('img');
             var imgName = img.getAttribute('data-name');
@@ -26,8 +26,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
         });
     });
 
-            var span = document.getElementsByClassName("close")[0];
-            span.onclick = function() { 
-                modal.style.display = "none";
-            }
-        });
+    var span = document.getElementsByClassName("close")[0];
+    span.onclick = function() { 
+        modal.style.display = "none";
+    }
+
+    // Close modal when clicking outside the modal content
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+});

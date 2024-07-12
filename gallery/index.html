@@ -106,11 +106,6 @@ images:
    img-medium: Watercolor
    img-price: TBD
 
-
-
-
- 
-
 ---
 
 <html class="no-js" lang="en">
@@ -157,10 +152,11 @@ images:
       .modal-content, #caption {    
           animation-name: zoom;
           animation-duration: 0.6s;
+          animation-timing-function: ease-out;
       }
 
       @keyframes zoom {
-          from {transform: scale(0)} 
+          from {transform: scale(0.95)} 
           to {transform: scale(1)}
       }
 
