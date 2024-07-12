@@ -5,63 +5,84 @@ description: "Here are my works"
 active: gallery
 header-img: "img/gallery-bg.png"
 images:
- - image_path: /gallery/paintings/baloon/baloon.png
-   image_file: /gallery/paintings/baloon/
-   img-name: baloon
+ - image_path: /gallery/paintings/test.jpg
+   img-name: car
    img-size: 16in x 16in
    img-medium: watercolor
    img-price: 10$
- - image_path: /gallery/paintings/bear/bear.png
-   image_file: /gallery/paintings/bear/
-   img-name: bear
-   img-size: 20in x 16in
-   img-medium: watercolor
-   img-price: 20$
- - image_path: /gallery/paintings/bird/bird.png
-   image_file: /gallery/paintings/bird/
-   img-name: bird
-   img-size: 8in x 16in
-   img-medium: watercolor
-   img-price: 30$
- - image_path: /gallery/paintings/cow/cow.png
-   image_file: /gallery/paintings/cow/
-   img-name: cow
-   img-size: 8in x 16in
-   img-medium: watercolor
-   img-price: 10$
- - image_path: /gallery/paintings/owl/owl.png
-   image_file: /gallery/paintings/owl/
-   img-name: owl
-   img-size: 8in x 16in
-   img-medium: watercolor
-   img-price: 15$
- - image_path: /gallery/paintings/owl2/owl2.png
-   image_file: /gallery/paintings/owl2/
-   img-name: owl2
-   img-size: 8in x 16in
-   img-medium: watercolor
-   img-price: 20$
- - image_path: /gallery/paintings/summer/summer.png
-   image_file: /gallery/paintings/summer/
-   img-name: summer
-   img-size: 8in x 16in
-   img-medium: watercolor
-   img-price: 35$
- - image_path: /gallery/paintings/swan/swan.png
-   image_file: /gallery/paintings/swan/
-   img-name: swan
-   img-size: 8in x 16in
-   img-medium: acrylic
-   img-price: 22$
- - image_path: /gallery/paintings/woman/woman.png
-   image_file: /gallery/paintings/woman/
-   img-name: woman
-   img-size: 8in x 16in
-   img-medium: acrylic
-   img-price: 45$
+
 ---
 
 <html class="no-js" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Art Gallery</title>
+  <style>
+      /* The Modal (background) */
+      .modal {
+          display: none;
+          position: fixed;
+          z-index: 1;
+          padding-top: 60px;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          overflow: auto;
+          background-color: rgb(0,0,0);
+          background-color: rgba(0,0,0,0.9);
+      }
+
+      /* Modal Content (image) */
+      .modal-content {
+          margin: auto;
+          display: block;
+          width: 80%;
+          max-width: 700px;
+      }
+
+      /* Caption of Modal Image */
+      #caption {
+          margin: auto;
+          display: block;
+          width: 80%;
+          max-width: 700px;
+          text-align: center;
+          color: #ccc;
+          padding: 10px 0;
+      }
+
+      /* Add Animation - Zoom in the Modal */
+      .modal-content, #caption {    
+          animation-name: zoom;
+          animation-duration: 0.6s;
+      }
+
+      @keyframes zoom {
+          from {transform: scale(0)} 
+          to {transform: scale(1)}
+      }
+
+      /* The Close Button */
+      .close {
+          position: absolute;
+          top: 15px;
+          right: 35px;
+          color: #f1f1f1;
+          font-size: 40px;
+          font-weight: bold;
+          transition: 0.3s;
+      }
+
+      .close:hover,
+      .close:focus {
+          color: #bbb;
+          text-decoration: none;
+          cursor: pointer;
+      }
+  </style>
+</head>
 <body class="gallery">
     <section id="content" role="main">
         <div class="wrapper">
@@ -107,7 +128,13 @@ images:
 <script src="{{ site.baseurl }}/js/scripts.js"></script>
 <!-- Modernizr -->
 <script src="{{ site.baseurl }}/js/modernizr.js"></script>
+<script src="{{ site.baseurl }}/js/image_caption.js"></script>
 
+<div id="imageModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="modalImage">
+  <div id="caption"></div>
+</div>
 
 </body>
 </html>
