@@ -9,11 +9,20 @@ document.addEventListener('DOMContentLoaded', (event) => {
             modal.style.display = "block";
             modalImg.src = item.href;
 
-            // Get the content from the figcaption
-            var figcaptionContent = item.closest('figure').querySelector('.gallery-caption .entry-summary').innerHTML;
+            // Get data attributes from the image
+            var img = item.querySelector('img');
+            var imgName = img.getAttribute('data-name');
+            var imgSize = img.getAttribute('data-size');
+            var imgMedium = img.getAttribute('data-medium');
+            var imgPrice = img.getAttribute('data-price');
 
-            // Set the caption content with the figcaption HTML
-            captionText.innerHTML = figcaptionContent;
+            // Set the caption content with different elements and fonts
+            captionText.innerHTML = `
+                <h3 class='img-name'>Name: ${imgName}</h3>
+                <p class='img-size'>Size: ${imgSize}</p>
+                <p class='img-medium'>Medium: ${imgMedium}</p>
+                <p class='img-price'>Price: ${imgPrice}</p>
+            `;
         });
     });
 

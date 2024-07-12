@@ -189,7 +189,11 @@ images:
                         <header class='gallery-icon'>
                             <a href="{{ site.url }}{{ site.baseurl }}{{ image.image_path }}">
                                 <img src="{{ site.url }}{{ site.baseurl }}{{ image.image_path }}" 
-                                alt="{{ image.img-name }}">
+                                alt="{{ image.img-name }}"
+                                data-name="{{ image.img-name }}" 
+                                data-size="{{ image.img-size }}" 
+                                data-medium="{{ image.img-medium }}" 
+                                data-price="{{ image.img-price }}">
                             </a>
                         </header>
                         <figcaption class='gallery-caption'>
