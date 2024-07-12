@@ -9,20 +9,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
             modal.style.display = "block";
             modalImg.src = item.href;
 
-            // Get data attributes from the image
-            var img = item.querySelector('img');
-            var imgName = img.getAttribute('data-name');
-            var imgSize = img.getAttribute('data-size');
-            var imgMedium = img.getAttribute('data-medium');
-            var imgPrice = img.getAttribute('data-price');
+            // Get the content from the figcaption
+            var figcaptionContent = item.closest('figure').querySelector('.gallery-caption .entry-summary').innerHTML;
 
-            // Set the caption content with different fonts
-            captionText.innerHTML = `
-                <span class='img-name'>Name: ${imgName}</span><br>
-                <span class='img-size'>Size: ${imgSize}</span><br>
-                <span class='img-medium'>Medium: ${imgMedium}</span><br>
-                <span class='img-price'>Price: ${imgPrice}</span>
-            `;
+            // Set the caption content with the figcaption HTML
+            captionText.innerHTML = figcaptionContent;
         });
     });
 
