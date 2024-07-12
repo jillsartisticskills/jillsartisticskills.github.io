@@ -3,13 +3,6 @@ layout: home
 main-title: "Jills&#8226;Artistic&#8226;Skills"
 subtitle: "Art Porfolio"
 description: "Paintings and more"
-images:
- - image_path: /img/slider/img1.png
-   gallery-folder: /img/slider/
- - image_path: /img/slider/img2.png
-   gallery-folder: /img/slider/
- - image_path: /img/slider/swan.png
-   gallery-folder: /img/slider/
 ---
 
 
@@ -45,7 +38,7 @@ images:
 						
 					<div class="gallery fullscreen-gallery kenburns-gallery">
 						<canvas id="kenburns"></canvas>	
-						{% for image in page.images %}  	
+						{% for image in site.data.images.images %}  	
 							<figure class="gallery-item">
 								<header class='gallery-icon'>
 									<a href="{{ site.url }}{{ site.baseurl }}{{ image.gallery-folder }}">
