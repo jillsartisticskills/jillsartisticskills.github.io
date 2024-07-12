@@ -98,7 +98,8 @@ images:
                     <figure class="effect-selena">
                         <header class='gallery-icon'>
                             <a href="{{ site.url }}{{ site.baseurl }}{{ image.image_path }}">
-                                <img src="{{ site.url }}{{ site.baseurl }}{{ image.image_path }}" alt="{{ image.img-name }} {{image.img-size}} {{image.img-medium}} {{image.img-price}}">
+                                <img src="{{ site.url }}{{ site.baseurl }}{{ image.image_path }}" 
+                                alt="<span class='img-name'>{{ image.img-name }}</span><br><span class='img-size'>{{ image.img-size }}</span><br><span class='img-medium'>{{ image.img-medium }}</span><br><span class='img-price'>{{ image.img-price }}</span>"> >
                             </a>
                         </header>
                         <figcaption class='gallery-caption'>
@@ -134,6 +135,25 @@ images:
 <!-- Modernizr -->
 <script src="{{ site.baseurl }}/js/modernizr.js"></script>
 <script src="{{ site.baseurl }}/js/image_caption.js"></script>
+
+
+<style>
+    .img-name {
+        font-family: 'Arial', sans-serif;
+    }
+
+    .img-size {
+        font-family: 'Courier New', monospace;
+    }
+
+    .img-medium {
+        font-family: 'Times New Roman', serif;
+    }
+
+    .img-price {
+        font-family: 'Verdana', sans-serif;
+    }
+</style>
 
 <div id="imageModal" class="modal">
   <span class="close">&times;</span>
