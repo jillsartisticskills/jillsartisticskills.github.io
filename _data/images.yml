@@ -99,3 +99,8 @@ images:
    img-size: 11in x 15in
    img-medium: Watercolor
    img-price: TBD
+ - image_path: /gallery/paintings/we were girls together.JPG
+   img-name: We Were Girls Together
+   img-size: 290mm x 210mm
+   img-medium: Watercolor
+   img-price: TBD
